@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useRegister from "../../../hooks/useRegister";
+import MainLayout from "../../../components/MainLayout";
 
 const EventRegisteration = () => {
   const [inputs, setInputs] = useState({
@@ -17,7 +18,9 @@ const EventRegisteration = () => {
   };
 
   return (
-    <main className="flex flex-row items-center justify-between h-screen">
+    <MainLayout>
+    <main className=" flex flex-col items-center justify-between">
+    <div className="flex flex-row items-center justify-between w-full max-w-[1440px] mx-auto mt-20 mb-10">
       <div className="flex flex-col items-center justify-center min-w-[300px] max-w-[500px] mx-auto  space-y-3">
         <span className="text-[#FE505A]  text-4xl font-bold text-center">
           Photo Sharing App
@@ -98,7 +101,9 @@ const EventRegisteration = () => {
       <div className="hidden lg:flex  lg:w-3/5 lg:flex-row lg:items-center lg:justify-end">
         <img src="../../2.png" />
       </div>
+    </div>
     </main>
+    </MainLayout>
   );
 };
 export default EventRegisteration;

@@ -7,7 +7,7 @@ import eventRoutes from "./routes/event.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import cors from "cors";
 import connectToMongoDB from "./db/connectToMongoDB.js";
-
+import helmet from "helmet";
 
 dotenv.config();
 
@@ -24,6 +24,7 @@ app.use(
   })
 );
 
+app.use(helmet());
 
 app.use(express.json()); // to parse the incoming requests with JSON payloads (from req.body)
 app.use(cookieParser());

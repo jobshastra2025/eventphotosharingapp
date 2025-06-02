@@ -126,7 +126,7 @@ export default function Footer() {
 
       {/* Newsletter Section */}
       <div className="border-t border-white/40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
             <div>
               <h4 className="text-lg font-semibold text-white mb-2">
@@ -136,7 +136,7 @@ export default function Footer() {
                 Subscribe to our newsletter for the latest updates.
               </p>
             </div>
-            <div className="relative flex w-full md:w-auto">
+            <div className="relative flex w-full md:w-[300px]">
               <input
                 type="email"
                 placeholder="Enter your email"
@@ -152,7 +152,7 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-white/40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
             <p className="text-sm text-white">
               © {currentYear} Photo Sharing App. All rights reserved.

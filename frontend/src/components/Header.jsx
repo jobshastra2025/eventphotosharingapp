@@ -1,17 +1,21 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useAuthContext } from '../context/AuthContext';
+import useLogout from '../hooks/useLogout';
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 const Header=()=> {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const { authUser } = useAuthContext();
+  const {loading,logout}=useLogout();
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   return (
     <header className="w-full bg-[#FE505A]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -35,9 +39,11 @@ const Header=()=> {
               <Link to={"/"} className="text-white hover:text-gray-200 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
                 Photos
               </Link>
-              <Link to={"/"} className="text-white hover:text-gray-200 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
-                Contact
-              </Link>
+         {authUser ? <div className="flex flex-row items-center justify-center space-x-2 px-3 py-2 rounded-md text-sm font-medium">
+          <span className='text-white'>{authUser?.username}</span> <img src={authUser?.profilePic} width={35} height={35}/><MdKeyboardArrowDown className='cursor-pointer' color='white' size={18}/></div> 
+          :   <Link to={"/"} className="text-white hover:text-gray-200 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                Login
+              </Link>}
             </div>
           </nav>
 
@@ -74,9 +80,9 @@ const Header=()=> {
               <Link to={"/"} className="text-white hover:text-gray-200 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">
                 Photos
               </Link>
-              <Link to={"/"} className="text-white hover:text-gray-200 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">
-                Contact
-              </Link>
+              <button disabled={loading} onClick={logout}  className="text-white hover:text-gray-200 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">
+                 {loading ? "Logging out" : "Logout"}
+              </button>
             </div>
           </div>
         )}
